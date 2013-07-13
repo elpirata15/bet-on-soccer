@@ -32,10 +32,19 @@ backup export: | setup
 	@mkdir -p $(dir $(file))
 	$(MYSQLDUMP) $(addprefix --,$(options)) --result-file="$(file)"
 
-# generate random 
+# setup database configuration
 config/db.php: config/mysql.env
 	perl -pe 'BEGIN { print "<?php\n" }; s/^\s*(\w+)=(\w*)(.*)$$/\$$$$1="$$2"$$3;/; END { print "?>"}' <$< >$@
 
-config/mysql.env: template/mysql.env
-	@echo Please create '$@' from '$<'
-	@false
+config/mysql.env:
+	@mkdir -p $(dir $@)
+	@echo MYSQL database configuration:
+	@	read -p "  Hostname: " hostname &&\
+		read -p "  Username: " username &&\
+		read -p "  Password: " password &&\
+		read -p "  Database: " database &&\
+		echo -E "hostname=$$hostname" >> $@ &&\
+		echo -E "username=$$username" >> $@ &&\
+		echo -E "password=$$password" >> $@ &&\
+		echo -E "database=$$database" >> $@
+
