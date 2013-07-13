@@ -7,6 +7,7 @@
   scope.require.config({
     baseUrl:    'js',
     paths: {
+      backbone: 'lib/backbone',
       require:  'lib/require'
     }
   });
