@@ -1,2 +1,4 @@
-/backup
-/config
+/backup/*
+/config/*
+/logs/*
+!.gitkeep
