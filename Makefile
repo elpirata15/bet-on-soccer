@@ -3,7 +3,7 @@ META = setup install export backup
 .PHONY: $(META) default
 
 # global vars
-MYSQL_    = source config/mysql.env && $(1) --host="$$hostname" --user="$$username" --password="$$password" "$$database"
+MYSQL_    = source config/db.env && $(1) --host="$$hostname" --user="$$username" --password="$$password" "$$database"
 MYSQL     = $(call MYSQL_,mysql)
 MYSQLDUMP = $(call MYSQL_,mysqldump)
 
@@ -13,7 +13,7 @@ default:
 	@echo Please specify a meta-target: $(META)
 
 # install database structure
-install: mysql/structure.sql | setup
+install: scripts/db.sql | setup
 	$(MYSQL) $<
 
 # generate config
@@ -21,7 +21,7 @@ setup: config/db.php
 
 # generate database backup
 backup: file = backup/$(shell date +%F_%H-%M-%S).sql
-export: file = mysql/structure.sql
+export: file = scripts/db.sql
 backup: options = extended-insert replace no-create-info skip-add-drop-table \
 	dump-date comments comments skip-disable-keys \
 	default-character-set=utf8 set-charset tz-utc quote-names
@@ -36,7 +36,7 @@ backup export: | setup
 config/db.php: config/mysql.env
 	perl -pe 'BEGIN { print "<?php\n" }; s/^\s*(\w+)=(\w*)(.*)$$/\$$$$1="$$2"$$3;/; END { print "?>"}' <$< >$@
 
-config/mysql.env:
+config/db.env:
 	@mkdir -p $(dir $@)
 	@echo MYSQL database configuration:
 	@	read -p "  Hostname: " hostname &&\
