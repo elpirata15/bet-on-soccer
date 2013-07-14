@@ -2,13 +2,13 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('LoginCtrl', [function() {
+angular.module('BoS.controllers', [])
+  .controller('BoS.Login', [function() {
 
   }])
-  .controller('RegisterCtrl', [function() {
+  .controller('BoS.Register', [function() {
 
   }])
-  .controller('RetrieveCtrl', [function() {
+  .controller('BoS.Retrieve', [function() {
 
   }]);
