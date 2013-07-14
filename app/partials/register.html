@@ -1,0 +1,32 @@
+<div id="registration">
+  <form method="post" accept-charset="utf-8">
+    <input type="hidden" name="login" value="1"/>
+    <fieldset>
+      <legend>Registration</legend>
+      <ol>
+        <li>
+          <label for="username" title="Login username">E-Mail:</label>
+          <input id="username" title="Login username" type="text" name="registration[username]" value="{{username}}"/>
+        </li>
+        <li>
+          <label for="password" title="Login password">Password:</label>
+          <input id="password" title="Login password" type="password" name="registration[password]" value="{{password}}"/>
+        </li>
+        <li>
+          <label for="confirm" title="Login password">Confirm:</label>
+          <input id="confirm" title="Login password" type="password" name="registration[confirm]" value="{{password}}"/>
+        </li>
+        <li>
+          <label for="alias" title="Display name">Name:</label>
+          <input id="alias" title="Display name" type="text" name="registration[alias]" value="{{alias}}"/>
+        </li>
+      </ol>
+      <input title="Submit" type="submit" class="submit"/>
+    </fieldset>
+  </form>
+</div>
+
+<ul class="menu">
+  <li><a href="#/index">Login</a></li>
+  <li><a href="#/retrieve">Reset password</a></li>
+</ul>

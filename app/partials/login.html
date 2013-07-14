@@ -1,0 +1,27 @@
+<div id="login">
+  <form method="post" accept-charset="utf-8">
+    <fieldset>
+      <legend>Login</legend>
+      <ol>
+        <li>
+          <label for="username" title="Your login username">E-Mail:</label>
+          <input  id="username" title="Your login username" name="login[username]" type="text" value="{{username}}"/>
+        </li>
+        <li>
+          <label for="password" title="Password">Password:</label>
+          <input  id="password" title="Password" name="login[password]" type="password" value="{{password}}"/>
+        </li>
+        <li>
+          <label for="remember" title="Stay signed in">Remember me:</label>
+          <input  id="remember" title="Stay signed in" name="login[remember]" type="checkbox" value="{{remember}}"/>
+        </li>
+      </ol>
+      <input title="Login" type="submit" class="submit"/>
+    </fieldset>
+  </form>
+</div>
+
+<ul class="menu">
+  <li><a href="#/register">Register</a></li>
+  <li><a href="#/retrieve">Reset password</a></li>
+</ul>

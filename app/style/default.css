@@ -15,7 +15,7 @@ body {
     font-family: "Arial";
     font-size: x-small;
 }
-#content {
+.content {
     margin: 2ex 1em;
     display: inline-block;
     vertical-align: middle;
@@ -26,8 +26,6 @@ body {
 /* {{{ angular-seed */
 .menu {
   list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
   padding: 0 0 0.5em;
 }
 
@@ -53,3 +51,67 @@ body {
   padding: 0;
 }
 /* }}} */
+
+/* {{{ common elemnts style */ 
+/* {{{ link */
+a {
+  color: blue;
+  font-weight: bold;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: red;
+}
+/* }}} */
+
+/* {{{ form */
+fieldset {
+  float: left;
+  clear: left;
+  width: 100%;
+  margin: 1ex 1em;
+  padding: 0;
+
+  background-color: #fafafa;
+  text-align: left;
+}
+fieldset legend {
+  margin-left: 1em;
+  padding: 0.2em 0.5em;
+
+  border: thin solid black;
+  background-color: #dddddd;
+  font-weight: bold;
+}
+fieldset ol {
+  margin: 2ex 2em 1ex;
+  padding: 1ex 2em 2ex;
+  list-style: none;
+}
+fieldset li {
+  float: left;
+  clear: left;
+  width: 100%;
+  margin-bottom: 1em;
+}
+fieldset label {
+  float: left;
+  clear: left;
+  width: 10em;
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+  font-weight: bold;
+}
+fieldset input {
+}
+fieldset input[type=submit]
+{
+  display: block;
+  margin: 0 auto 2ex;
+}
+/* }}} */
+

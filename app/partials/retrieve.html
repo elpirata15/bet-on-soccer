@@ -1,0 +1,23 @@
+<div id="password-reset">
+  <form method="post" accept-charset="utf-8">
+    <fieldset>
+      <legend>Reset password</legend>
+      <ol>
+        <li>
+          <label for="username" title="Your login username">E-Mail:</label>
+          <input id="username" title="Your login username" type="text" name="reset[username]" value="{{username}}"/>
+        </li>
+        <li>
+          <label for="password" title="Password">New password:</label>
+          <input id="password" title="Password" type="password" name="reset[password]" value="{{password}}"/>
+        </li>
+      </ol>
+      <input title="Login" type="submit" class="submit"/>
+    </fieldset>
+  </form>
+</div>
+
+<ul class="menu">
+  <li><a href="#/index">Login</a></li>
+  <li><a href="#/register">Register</a></li>
+</ul>
