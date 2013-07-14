@@ -1,19 +1,19 @@
 <div id="login">
-  <form method="post" accept-charset="utf-8">
+  <form accept-charset="utf-8" ng-submit="submit()">
     <fieldset>
       <legend>Login</legend>
       <ol>
         <li>
           <label for="username" title="Your login username">E-Mail:</label>
-          <input  id="username" title="Your login username" name="login[username]" type="text" value="{{username}}"/>
+          <input  id="username" title="Your login username" type="text" ng-model="username"/>
         </li>
         <li>
           <label for="password" title="Password">Password:</label>
-          <input  id="password" title="Password" name="login[password]" type="password" value="{{password}}"/>
+          <input  id="password" title="Password" type="password" ng-model="password"/>
         </li>
         <li>
           <label for="remember" title="Stay signed in">Remember me:</label>
-          <input  id="remember" title="Stay signed in" name="login[remember]" type="checkbox" value="{{remember}}"/>
+          <input  id="remember" title="Stay signed in" type="checkbox" ng-model="remember"/>
         </li>
       </ol>
       <input title="Login" type="submit" class="submit"/>
