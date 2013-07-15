@@ -1,0 +1,4 @@
+Allow from All
+Deny from None
+DirectoryIndex index.html
+Options MultiViews

@@ -13,31 +13,31 @@ angular.module('BoS', [
     var access = routingConfig.accessLevels;
 
     $routeProvider.when('/', {
-      templateUrl:  'partials/home.html',
+      templateUrl:  'partials/home',
       controller:   'BoS.Home',
       access:       access.anon
     });
 
     $routeProvider.when('/login', {
-      templateUrl:  'partials/login.html',
+      templateUrl:  'partials/login',
       controller:   'BoS.Login',
       access:       access.anon
     });
 
     $routeProvider.when('/register', {
-      templateUrl:  'partials/register.html',
+      templateUrl:  'partials/register',
       controller:   'BoS.Register',
       access:       access.anon
     });
 
     $routeProvider.when('/retrieve', {
-      templateUrl:  'partials/retrieve.html',
+      templateUrl:  'partials/retrieve',
       controller:   'BoS.Retrieve',
       access:       access.anon
     });
 
     $routeProvider.when('/404', {
-      templateUrl:  'partials/404.html',
+      templateUrl:  'partials/404',
       access:       access.public
     });
 
