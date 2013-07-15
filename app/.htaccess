@@ -1,4 +1,15 @@
+# In your server config you should have turned on at least
+#   AllowOverride FileInfo Indexes Options
+
+# needs AllowOverride Indexes
+DirectoryIndex index.html
+
+# needs AllowOverride Options
+Options MultiViews
+
+# needs AllowOverride FileInfo
+AddType application/json .php
+
+# needs AllowOverride Limit
 Allow from All
 Deny from None
-DirectoryIndex index.html
-Options MultiViews

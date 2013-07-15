@@ -34,7 +34,7 @@ angular.module('app')
       },
 
       register: function(user, success, error) {
-        $http.post('service/user.php', user).success(function(res) {
+        $http.post('service/user', user).success(function(res) {
           changeUser(res);
           success();
         }).error(error);
