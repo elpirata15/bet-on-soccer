@@ -22,6 +22,18 @@ Afterwards you need to create the tables to the database:
     make install
 
 
+## Requirements
+
+Server:
+
+* PHP >= 5.4
+* pecl-uuid ~ 1.0.3
+
+Client:
+
+* latest HTML5 support
+
+
 ## Maintenance
 
 Is mainly performed via the web-interface.

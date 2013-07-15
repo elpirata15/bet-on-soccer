@@ -1,5 +1,4 @@
 <?php
-require_once('uuid.php');
 
 function password_create($password)
 {
@@ -7,9 +6,9 @@ function password_create($password)
   $sth = $dbh->prepare('
     INSERT INTO `password` (`salt`, `hash`)
     VALUES (?,?)');
-  $salt = uuid_v4();
-  $hash = sha1($data.$salt, true);
-  $sth->execute($salt, $hash);
+  $salt = uuid_create(4);
+  $hash = sha1($password.$salt, true);
+  $sth->execute(array($salt, $hash));
   if ($sth->rowCount() == 1)
     return $dbh->lastInsertId();
   return null;
