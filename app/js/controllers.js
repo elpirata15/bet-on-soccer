@@ -53,7 +53,8 @@ angular.module('controllers', [])
       Auth.register(
         { username: $scope.username,
           password: $scope.password,
-          role: $scope.role },
+          alias:    $scope.alias,
+          role:     $scope.role },
         function() { $location.path('/'); },
         function(err) { $rootScope.error = err; }
       );
