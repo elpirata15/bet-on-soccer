@@ -4,12 +4,12 @@
       <legend>Reset password</legend>
       <ol>
         <li>
-          <label for="username" title="Your login username">E-Mail:</label>
-          <input id="username" title="Your login username" type="text" ng-model="username"/>
+          <label for="username" title="Login email">E-Mail:</label>
+          <input  id="username" title="Login email" type="email" ng-model="username" required/>
         </li>
         <li>
-          <label for="password" title="Password">New password:</label>
-          <input id="password" title="Password" type="password" ng-model="password"/>
+          <label for="password" title="Login password">New password:</label>
+          <input  id="password" title="Login password" type="password" ng-model="password" required/>
         </li>
       </ol>
       <input title="Login" type="submit" class="submit"/>

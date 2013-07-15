@@ -4,12 +4,12 @@
       <legend>Login</legend>
       <ol>
         <li>
-          <label for="username" title="Your login username">E-Mail:</label>
-          <input  id="username" title="Your login username" type="text" ng-model="username"/>
+          <label for="username" title="Login email">E-Mail:</label>
+          <input  id="username" title="Login email" type="email" ng-model="username" required/>
         </li>
         <li>
-          <label for="password" title="Password">Password:</label>
-          <input  id="password" title="Password" type="password" ng-model="password"/>
+          <label for="password" title="Login password">Password:</label>
+          <input  id="password" title="Login password" type="password" ng-model="password" required/>
         </li>
         <li>
           <label for="remember" title="Stay signed in">Remember me:</label>
