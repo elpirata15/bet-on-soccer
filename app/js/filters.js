@@ -2,9 +2,13 @@
 
 /* Filters */
 
-angular.module('BoS.filters', []).
-  filter('interpolate', ['version', function(version) {
+angular.module('filters', [])
+
+  .filter('interpolate', [
+      'version',
+      function(version) {
     return function(text) {
       return String(text).replace(/\%VERSION\%/mg, version);
     }
   }]);
+

@@ -1,38 +1,39 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('BoS', [
+angular.module('app', [
     'ngCookies',
-    'BoS.filters',
-    'BoS.services',
-    'BoS.directives',
-    'BoS.controllers' ])
-  .config(['$routeProvider', '$locationProvider', '$httpProvider',
-      function ($routeProvider, $locationProvider, $httpProvider) {
+    'filters',
+    'services',
+    'directives',
+    'controllers' ])
 
+  .config([
+      '$routeProvider', '$locationProvider', '$httpProvider',
+      function ($routeProvider, $locationProvider, $httpProvider) {
     var access = routingConfig.accessLevels;
 
     $routeProvider.when('/', {
       templateUrl:  'partials/home',
-      controller:   'BoS.Home',
+      controller:   'HomeCtrl',
       access:       access.anon
     });
 
     $routeProvider.when('/login', {
       templateUrl:  'partials/login',
-      controller:   'BoS.Login',
+      controller:   'LoginCtrl',
       access:       access.anon
     });
 
     $routeProvider.when('/register', {
       templateUrl:  'partials/register',
-      controller:   'BoS.Register',
+      controller:   'RegisterCtrl',
       access:       access.anon
     });
 
     $routeProvider.when('/retrieve', {
       templateUrl:  'partials/retrieve',
-      controller:   'BoS.Retrieve',
+      controller:   'RetrieveCtrl',
       access:       access.anon
     });
 
@@ -43,37 +44,43 @@ angular.module('BoS', [
 
     $routeProvider.otherwise({redirectTo:'/404'});
 
-    //$locationProvider.html5Mode(true);
+    // gives weird redirection bugs: (TODO)
+    // $locationProvider.html5Mode(true);
 
-    var interceptor = ['$location', '$q', function($location, $q) {
-        function success(response) {
-            return response;
+    $httpProvider.responseInterceptors.push([
+        '$location', '$q',
+        function($location, $q) {
+      function success(response) {
+        return response;
+      }
+
+      function error(response) {
+        if (response.status === 401) {
+          $location.path('/login');
+          return $q.reject(response);
         }
-
-        function error(response) {
-            if(response.status === 401) {
-                $location.path('/login');
-                return $q.reject(response);
-            }
-            else {
-                return $q.reject(response);
-            }
+        else {
+          return $q.reject(response);
         }
+      }
 
-        return function(promise) {
-            return promise.then(success, error);
-        }
-    }];
-
-    $httpProvider.responseInterceptors.push(interceptor);
+      return function(promise) {
+        return promise.then(success, error);
+      }
+    }]);
   }])
 
-  .run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
-        $rootScope.$on("$routeChangeStart", function (event, next, current) {
-            $rootScope.error = null;
-            if (!Auth.authorize(next.access)) {
-                if(Auth.isLoggedIn()) $location.path('/');
-                else                  $location.path('/login');
-            }
-        });
+  .run([
+      '$rootScope', '$location', 'Auth',
+      function ($rootScope, $location, Auth) {
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+      $rootScope.error = null;
+      if (!Auth.authorize(next.access)) {
+        if (Auth.isLoggedIn())
+          $location.path('/');
+        else
+          $location.path('/login');
+      }
+    });
   }]);
+
