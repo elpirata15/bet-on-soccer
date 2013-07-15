@@ -13,7 +13,7 @@ angular.module('controllers', [])
 
     $scope.logout = function() {
       Auth.logout(
-        function() { $location.path('/login'); },
+        function() { $location.path('login'); },
         function() { $rootScope.error = "Failed to logout"; }
       );
     };
@@ -33,13 +33,13 @@ angular.module('controllers', [])
         { username: $scope.username,
           password: $scope.password,
           rememberme: $scope.rememberme },
-        function(res) { $location.path('/'); },
+        function(res) { $location.path(''); },
         function(err) { $rootScope.error = "Failed to login"; }
       );
     };
 
     $scope.loginOauth = function(provider) {
-      $window.location.href = '/auth/' + provider;
+      $window.location.href = 'auth/' + provider;
     };
   }])
 
@@ -55,7 +55,7 @@ angular.module('controllers', [])
           password: $scope.password,
           alias:    $scope.alias,
           role:     $scope.role },
-        function() { $location.path('/'); },
+        function() { $location.path(''); },
         function(err) { $rootScope.error = err; }
       );
     };

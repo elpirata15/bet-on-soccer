@@ -34,21 +34,21 @@ angular.module('app')
       },
 
       register: function(user, success, error) {
-        $http.post('/register', user).success(function(res) {
+        $http.post('service/user.php', user).success(function(res) {
           changeUser(res);
           success();
         }).error(error);
       },
 
       login: function(user, success, error) {
-        $http.post('/login', user).success(function(user){
+        $http.post('service/session', user).success(function(user){
           changeUser(user);
           success(user);
         }).error(error);
       },
 
       logout: function(success, error) {
-        $http.post('/logout').success(function(){
+        $http.delete('service/session').success(function(){
           changeUser({
             username: '',
             role: userRoles.public
@@ -66,7 +66,7 @@ angular.module('app')
   .factory('Users', function($http) {
     return {
       getAll: function(success, error) {
-        $http.get('/users').success(success).error(error);
+        $http.get('users').success(success).error(error);
       }
     };
   });

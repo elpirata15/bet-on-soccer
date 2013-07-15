@@ -56,7 +56,7 @@ angular.module('app', [
 
       function error(response) {
         if (response.status === 401) {
-          $location.path('/login');
+          $location.path('login');
           return $q.reject(response);
         }
         else {
@@ -77,9 +77,9 @@ angular.module('app', [
       $rootScope.error = null;
       if (!Auth.authorize(next.access)) {
         if (Auth.isLoggedIn())
-          $location.path('/');
+          $location.path('');
         else
-          $location.path('/login');
+          $location.path('login');
       }
     });
   }]);
