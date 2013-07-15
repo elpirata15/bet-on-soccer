@@ -33,7 +33,7 @@ backup export: | setup
 	$(MYSQLDUMP) $(addprefix --,$(options)) --result-file="$(file)"
 
 # setup database configuration
-config/db.php: config/mysql.env
+config/db.php: config/db.env
 	perl -pe 'BEGIN { print "<?php\n" }; s/^\s*(\w+)=(\w*)(.*)$$/\$$$$1="$$2"$$3;/; END { print "?>"}' <$< >$@
 
 config/db.env:
