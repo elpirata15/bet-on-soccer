@@ -13,8 +13,8 @@
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `authentication` (
   `user` int(10) unsigned NOT NULL,
-  `series` binary(16) NOT NULL COMMENT 'Version 4 UUID',
-  `token` binary(16) DEFAULT NULL COMMENT 'Version 4 UUID',
+  `series` binary(16) NOT NULL,
+  `token` binary(16) DEFAULT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`user`,`series`),
   CONSTRAINT `authentication_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

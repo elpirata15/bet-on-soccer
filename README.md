@@ -27,11 +27,11 @@ Afterwards you need to create the tables to the database:
 Server:
 
 * PHP >= 5.4
-* pecl-uuid ~ 1.0.3
 
 Client:
 
 * latest HTML5 support
+* no IE
 
 
 ## Maintenance
