@@ -43,13 +43,11 @@ CREATE TABLE `group` (
   `tournament` int(10) unsigned NOT NULL,
   `fixed` tinyint(1) NOT NULL DEFAULT '0',
   `exhibitionist` tinyint(1) NOT NULL,
-  `password` int(10) unsigned DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `password` (`password`),
   KEY `tournament` (`tournament`),
-  CONSTRAINT `group_ibfk_1` FOREIGN KEY (`password`) REFERENCES `password` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `group_ibfk_2` FOREIGN KEY (`tournament`) REFERENCES `tournament` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `group_ibfk_1` FOREIGN KEY (`tournament`) REFERENCES `tournament` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -106,16 +104,6 @@ CREATE TABLE `message` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `password` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `salt` binary(16) NOT NULL,
-  `hash` binary(20) NOT NULL COMMENT 'SHA-1',
-  `stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `round` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tournament` int(10) unsigned NOT NULL,
@@ -142,16 +130,14 @@ CREATE TABLE `tournament` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `round` int(10) unsigned DEFAULT NULL,
-  `password` int(10) unsigned DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `champion` int(10) unsigned DEFAULT NULL,
   `stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
-  KEY `password` (`password`),
   KEY `champion` (`champion`),
   KEY `round` (`round`),
   CONSTRAINT `tournament_ibfk_3` FOREIGN KEY (`round`) REFERENCES `round` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `tournament_ibfk_1` FOREIGN KEY (`password`) REFERENCES `password` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `tournament_ibfk_2` FOREIGN KEY (`champion`) REFERENCES `team` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -161,12 +147,10 @@ CREATE TABLE `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `password` int(10) unsigned DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `name` (`name`),
-  KEY `password` (`password`),
-  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`password`) REFERENCES `password` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

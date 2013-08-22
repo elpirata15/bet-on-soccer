@@ -32,21 +32,17 @@ function is_valid_password($str)
 function user_create($user)
 {
   global $dbh;
-  $password = password_create($user['password']);
   $sth = $dbh->prepare('
     INSERT INTO `user` (`name`,`password`,`alias`)
     VALUES (?,?,?)');
 
   $sth->execute(array(
     $user['username'],
-    $password,
+    password_create($user['password']),
     $user['alias']
   ));
 
-  if ($sth->rowCount() == 1)
-    return true;
-  password_delete($password);
-  return false;
+  return $sth->rowCount() == 1;
 }
 
 function user_exists($name)
