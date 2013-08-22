@@ -14,7 +14,7 @@ default:
 
 # install database structure
 install: scripts/db.sql | setup
-	$(MYSQL) $<
+	$(MYSQL) <$<
 
 # generate config
 setup: config/db.php
