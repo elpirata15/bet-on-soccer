@@ -47,7 +47,7 @@ For convenience there is a backup `make` target:
 
 ### Running unit tests
 
-We recommend using [jasmine](http://pivotal.github.com/jasmine/) and
+We recommend using [jasmine](https://jasmine.github.io/) and
 [Karma](http://karma-runner.github.io) for your unit tests/specs, but you are free
 to use whatever works for you.
 
